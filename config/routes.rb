@@ -6,3 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 end
+
+RegistrationSystem::Application.routes.draw do
+  get 'signup', to: 'users#new', as: 'signup'
+  post 'users', to: 'users#create'
+end
