@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  breed: MyString
+  owner: MyString
+  age: MyString
+  weight: 1.5
+  birth_date: 2023-05-15
+  image: 
+
+two:
+  name: MyString
+  breed: MyString
+  owner: MyString
+  age: MyString
+  weight: 1.5
+  birth_date: 2023-05-15
+  image: 

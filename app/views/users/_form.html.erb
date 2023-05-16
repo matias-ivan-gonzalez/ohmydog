@@ -1,0 +1,153 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :surname, style: "display: block" %>
+    <%= form.text_field :surname, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :dni, style: "display: block" %>
+    <%= form.text_field :dni, required: true%>
+  </div>
+
+  <div>
+    <%= form.label :mail, style: "display: block" %>
+    <%= form.text_field :mail, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :address, style: "display: block" %>
+    <%= form.text_field :address, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone, required: true %>
+  </div>
+
+    <div>
+      <%= form.label :dog_name, style: "display: block" %>
+      <%= form.text_field :dog_name, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<style>
+  .error-message {
+    display: flex;
+    align-items: center;
+    color: #FF6600;
+    background-color: #FFF3E8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .error-message img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('signin-form');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var nameInput = document.getElementById('user_name');
+      var surnameInput = document.getElementById('user_surname');
+      var passwordInput = document.getElementById('user_password');
+      var mailInput = document.getElementById('user_mail');
+      var phoneInput = document.getElementById('user_phone');
+      var dniInput = document.getElementById('user_dni');
+      var dogNameInput = document.getElementById('user_dog_name');
+
+      // Validate name
+      if (nameInput.value === '') {
+        alert('Por favor, ingrese su nombre.');
+        return false;
+      }
+
+      // Validate surname
+      if (nameInput.value === '') {
+        alert('Por favor, ingrese su apellido.');
+        return false;
+      }
+
+      // Validate password
+      if (passwordInput.value === '') {
+        alert('Por favor, ingrese una contraseña.');
+        return false;
+      }
+
+      // Validate email
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        alert('Por favor, ingrese una direcciòn email vàlida.');
+        return false;
+      }
+
+      // Validate phone number
+      var phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phoneInput.value)) {
+        alert('Por favor, ingrese un nùmero vàlido de 10 dìgitos.');
+        return false;
+      }
+
+      // Validate ID
+      if (idInput.value.length < 7) {
+        alert('Por favor, inserte un DNI correcto.');
+        return false;
+      }
+
+      // Validate dog's name
+      if (dogNameInput.value === '') {
+        alert('Por favor, ingrese el nombre de su perro.');
+        return false;
+      }
+
+      // Form is valid, proceed with submission
+      form.submit();
+    });
+  });
+
+function displayError(message) {
+  var errorContainer = document.createElement('div');
+  errorContainer.className = 'error-message';
+
+  var errorLogo = document.createElement('img');
+  errorLogo.src = '/path/to/error-logo.png'; // Replace with the correct path to your error logo image
+
+  var errorMessage = document.createElement('span');
+  errorMessage.textContent = message;
+
+  errorContainer.appendChild(errorLogo);
+  errorContainer.appendChild(errorMessage);
+
+  var form = document.getElementById('signin-form');
+  form.insertBefore(errorContainer, form.firstChild);
+}
+
+</script>
