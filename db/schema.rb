@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_025411) do
     t.float "weight"
     t.date "birth_date"
     t.binary "image"
+ActiveRecord::Schema[7.0].define(version: 2023_05_14_034518) do
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.string "dni"
+    t.string "mail"
+    t.string "address"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
